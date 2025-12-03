@@ -1,0 +1,1 @@
+ /Users/mark/Documents/GitHub/MiCard-Completed/.dart_tool/flutter_build/d6900ed88f00cea1cf3dbe0ad95d46ee/native_assets.json: 

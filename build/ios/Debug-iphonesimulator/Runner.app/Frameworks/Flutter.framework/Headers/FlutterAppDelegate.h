@@ -2,8 +2,8 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_FLUTTERAPPDELEGATE_H_
-#define FLUTTER_FLUTTERAPPDELEGATE_H_
+#ifndef FLUTTER_SHELL_PLATFORM_DARWIN_IOS_FRAMEWORK_HEADERS_FLUTTERAPPDELEGATE_H_
+#define FLUTTER_SHELL_PLATFORM_DARWIN_IOS_FRAMEWORK_HEADERS_FLUTTERAPPDELEGATE_H_
 
 #import <UIKit/UIKit.h>
 
@@ -27,8 +27,22 @@ FLUTTER_DARWIN_EXPORT
 @interface FlutterAppDelegate
     : UIResponder <UIApplicationDelegate, FlutterPluginRegistry, FlutterAppLifeCycleProvider>
 
-@property(strong, nonatomic) UIWindow* window;
+@property(nonatomic, strong, nullable) UIWindow* window;
+
+/**
+ * The `FlutterPluginRegistrant` that will be used when FlutterViewControllers
+ * are instantiated from nibs.
+ *
+ * The `FlutterAppDelegate` itself can be passed in without creating a retain
+ * cycle.
+ *
+ * This was introduced to help users migrate code from the FlutterAppDelegate
+ * when UISceneDelegate was adopted. Using
+ * FlutterViewController.pluginRegistrant should be preferred since it doesn't
+ * rely on the FlutterAppDelegate.
+ */
+@property(nonatomic, strong, nullable) NSObject<FlutterPluginRegistrant>* pluginRegistrant;
 
 @end
 
-#endif  // FLUTTER_FLUTTERDARTPROJECT_H_
+#endif  // FLUTTER_SHELL_PLATFORM_DARWIN_IOS_FRAMEWORK_HEADERS_FLUTTERAPPDELEGATE_H_
